@@ -7,13 +7,16 @@ jobs:
     steps:
       - name: Step 1 - Success
         run: echo "Step 1 completed successfully"
+
       - name: Step 2 - Deployment
         run: |
           echo "Starting deployment..."
           exit 1
+
       - name: Step 3 - Failure Alert
-        if: failure()
+        if: ${{ failure() }}
         run: echo "ALERT: Deployment failed!"
+
       - name: Step 4 - Cleanup
-        if: always()
+        if: ${{ always() }}
         run: echo "Cleaning temporary files"
