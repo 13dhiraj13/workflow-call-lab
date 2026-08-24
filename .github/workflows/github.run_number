@@ -1,13 +1,17 @@
 name: Dynamic Configuration Demo2
+
 on:
   push:
+
 jobs:
   demo:
     runs-on: ubuntu-latest
+
     steps:
       - name: Generate Version
         run: |
           DYNAMIC_VERSION="v1.0.${{ github.run_number }}"
           echo "MY_VERSION=$DYNAMIC_VERSION" >> $GITHUB_ENV
+
       - name: Display Version
         run: echo "Deploying version $MY_VERSION"
